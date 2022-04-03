@@ -8,17 +8,16 @@ import (
 )
 
 func SentRequest(request string) error {
-	fmt.Println("-------------- send start -------")
 	req, err := http.NewRequest("POST", "http://localhost:8080/v1/searchtopword", strings.NewReader(request))
 	if err != nil {
-		fmt.Println("Error --->", err)
+		fmt.Println("request error --->", err)
 		return err
 	}
 	req.Header.Add("Content-Type", "text/plain")
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
-		fmt.Println(" cilent Error --->", err)
+		fmt.Println("cilent Error --->", err)
 		return err
 	}
 	//fmt.Println(resp.Status)
